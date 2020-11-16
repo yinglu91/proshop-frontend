@@ -1,68 +1,36 @@
 import React from 'react';
 
+// rating: 1, 2, 2.5, ... 5
 const Rating = ({ value, text, color }) => {
+  const stars = []
+
+  for (let i=1; i<=5; i++) {
+    let cssClassName = '';
+    if (i <= value) {
+      cssClassName = 'fas fa-star';
+      //stars.push(<i className="fas fa-star"></i>); // full start
+    } else if (i === Math.ceil(value) && !Number.isInteger(value)) { 
+      cssClassName = 'fas fa-star-half-alt';
+      //stars.push(<i className="fas fa-star-half-alt"></i>); // half start
+    } else {
+      cssClassName = 'far fa-star';
+      //stars.push(<i className="far fa-star"></i>); // empty start
+    }
+
+    stars.push(
+      <span key={i}>
+        <i
+          style={{ color }}
+          className={cssClassName}
+        ></i>
+      </span>
+    )
+  }
+
   return (
     <div className="rating">
-      <span>
-        <i
-          style={{ color }}
-          className={
-            value >= 1
-              ? 'fas fa-star'
-              : value >= 0.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        ></i>
-      </span>
-      <span>
-        <i
-          style={{ color }}
-          className={
-            value >= 2
-              ? 'fas fa-star'
-              : value >= 1.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        ></i>
-      </span>
-      <span>
-        <i
-          style={{ color }}
-          className={
-            value >= 3
-              ? 'fas fa-star'
-              : value >= 2.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        ></i>
-      </span>
-      <span>
-        <i
-          style={{ color }}
-          className={
-            value >= 4
-              ? 'fas fa-star'
-              : value >= 3.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        ></i>
-      </span>
-      <span>
-        <i
-          style={{ color }}
-          className={
-            value >= 5
-              ? 'fas fa-star'
-              : value >= 4.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        ></i>
-      </span>
+      {stars}
+
       <span>{text && text}</span>
     </div>
   );
