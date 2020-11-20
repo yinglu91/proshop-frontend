@@ -19,6 +19,7 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
+// https://github.com/bradtraversy/proshop_mern/tree/master/frontend
 
 // https://reactrouter.com/web/api/Hooks/usehistory
 // https://reactrouter.com/web/api/Hooks/
