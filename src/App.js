@@ -9,6 +9,11 @@ import CartScreen from './screens/CartScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 
+import axios from 'axios'
+
+// Global axios defaults
+axios.defaults.baseURL = process.env.PROSHOP_BASE_URL
+
 const App = () => {
   return (
     <Router>
